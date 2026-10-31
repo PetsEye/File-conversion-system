@@ -1,0 +1,16 @@
+[Unit]
+Description=mReduce file conversion worker
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+EnvironmentFile=/etc/default/mreduce-worker
+ExecStart=/usr/local/bin/mrnode worker $MREDUCE_WORKER_ARGS
+Restart=always
+RestartSec=2
+DynamicUser=yes
+PrivateTmp=yes
+Nice=10
+
+[Install]
+WantedBy=multi-user.target

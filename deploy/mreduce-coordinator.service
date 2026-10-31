@@ -1,0 +1,14 @@
+[Unit]
+Description=mReduce file conversion coordinator
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+ExecStart=/usr/local/bin/mrnode coordinator --port 7070
+Restart=always
+RestartSec=2
+DynamicUser=yes
+PrivateTmp=yes
+
+[Install]
+WantedBy=multi-user.target
